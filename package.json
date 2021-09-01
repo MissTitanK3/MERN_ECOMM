@@ -1,0 +1,29 @@
+{
+  "name": "mern_ecomm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server/server",
+    "server": "nodemon server/server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MissTitanK3/MERN_ECOMM.git"
+  },
+  "author": "Tianna McCoy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MissTitanK3/MERN_ECOMM/issues"
+  },
+  "homepage": "https://github.com/MissTitanK3/MERN_ECOMM#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.1",
+    "nodemon": "^2.0.12"
+  }
+}
