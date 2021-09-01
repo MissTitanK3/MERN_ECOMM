@@ -1,7 +1,17 @@
-const express = require('express')
-const products = require('./data/products')
+import express from 'express'
+import dotenv from 'dotenv'
+import colors from 'colors'
+
+import products from './data/products.js'
+import connectDB from './config/db.js'
+
+dotenv.config()
+
+connectDB()
+
 const app = express()
-PORT = 5000
+
+const PORT = process.env.PORT || 5000
 
 app.get('/', (req, res) => {
   res.send('API is alive.')
@@ -14,4 +24,4 @@ app.get('/api/product/:id', (req, res) => {
   res.json(product)
 })
 
-app.listen(PORT, console.log(`Server Running on PORT:${PORT}`))
+app.listen(PORT, console.log(`Server Running in ${process.env.NODE_ENV} mode on PORT:${PORT}`.yellow.bold))
