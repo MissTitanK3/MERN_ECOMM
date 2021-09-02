@@ -1,26 +1,34 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Product } from '../model/Product'
 import { ProductsWrap } from '../styles/Wrapper'
-import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { listProducts } from '../api/productActions'
+import { Loader } from '../model/Loader'
+import Message from '../model/Message'
 
 export const Home = () => {
-  const [products, setProducts] = useState([])
+  const dispatch = useDispatch()
+  const productList = useSelector(state => state.productList)
+  const { loading, error, products } = productList
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      const { data } = await axios.get('/api/products')
-      setProducts(data)
-    }
-    fetchProducts()
-  }, [])
+    dispatch(listProducts())
+  }, [dispatch])
+
   return (
     <>
       <h1>Lastest Products</h1>
-      <ProductsWrap>
-        {products.map(product => (
-          <Product key={product._id} product={product} />
-        ))}
-      </ProductsWrap>
+      {loading
+        ? (<Loader />)
+        : error
+          ? (<Message variant='danger'>{error}</Message>)
+          :
+          (<ProductsWrap>
+            {products.map(product => (
+              <Product key={product._id} product={product} />
+            ))}
+          </ProductsWrap>)
+      }
     </>
   )
 }
