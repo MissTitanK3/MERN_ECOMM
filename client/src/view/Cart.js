@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { Loader } from '../model/Loader'
-import Message from '../model/Message'
+// import { Loader } from '../model/Loader'
+// import Message from '../model/Message'
 import { addToCart, removeFromCart } from '../api/cartActions'
 import { BtnElement } from '../styles/Elements'
 
