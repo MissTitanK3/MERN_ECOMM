@@ -39,8 +39,8 @@ export const Cart = ({ match, location, history }) => {
           :
           <ul>
             {cartItems.map(item => (
-              <>
-                <li key={item.product}>
+              <div key={item.product}>
+                <li >
                   <img src={item.image} alt={item.name} />
                 </li>
                 <li>
@@ -51,8 +51,12 @@ export const Cart = ({ match, location, history }) => {
                 </li>
                 <li>
                   {
-                    <form action="" onChange={(e) => dispatch(addToCart(item.product, Number(e.target.value)))}>
-                      <select value={item.qty} name="qty" id="qty" style={{ width: '50px' }}>
+                    <form action="" >
+                      <select
+                        value={item.qty}
+                        name="qty" id="qty"
+                        onChange={(e) => dispatch(addToCart(item.product, Number(e.target.value)))}
+                        style={{ width: '50px' }}>
                         {
                           [...Array(item.countInStock).keys()].map((x) => (
                             <option key={x} value={x + 1}>{x + 1}</option>
@@ -67,7 +71,7 @@ export const Cart = ({ match, location, history }) => {
                     <i className='fas fa-trash' ></i>
                   </BtnElement>
                 </li>
-              </>
+              </div>
             ))}
           </ul>
 

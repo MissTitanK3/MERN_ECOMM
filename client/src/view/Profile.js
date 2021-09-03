@@ -18,11 +18,9 @@ export const Profile = ({ location, history }) => {
 
   const userDetails = useSelector(state => state.userDetails)
   const { user } = userDetails
-  console.log(user)
 
   const userLogin = useSelector(state => state.userLogin)
   const { loading, error, userInfo } = userLogin
-  console.log(userInfo)
 
   useEffect(() => {
     if (!userInfo) {
@@ -42,6 +40,7 @@ export const Profile = ({ location, history }) => {
     if (password !== confirmPW) {
       setMessage('Passwords Do Not Match')
     } else {
+      console.log('dones')
       // dispatch(register(name, email, password))
     }
   }
@@ -58,9 +57,9 @@ export const Profile = ({ location, history }) => {
         <label htmlFor="">Email Address</label>
         <input type="email" placeholder='Enter Email' value={email} onChange={(e) => setEmail(e.target.value)} />
         <label htmlFor="">Password</label>
-        <input type="password" placeholder='Enter Password' value={password} onChange={(e) => setPassword(e.target.value)} />
+        <input type="password" placeholder='Enter Password' value='' onChange={(e) => setPassword(e.target.value)} />
         <label htmlFor="">Confirm Password</label>
-        <input type="password" placeholder='Confirm Password' value={confirmPW} onChange={(e) => setConfirmPW(e.target.value)} />
+        <input type="password" placeholder='Confirm Password' value='' onChange={(e) => setConfirmPW(e.target.value)} />
         <button type="submit">Update</button>
       </form>
     </>
